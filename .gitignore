@@ -1,0 +1,68 @@
+# ───────────────────────────────
+# Go build and cache artifacts
+# ───────────────────────────────
+/bin/
+/build/
+/dist/
+/out/
+/tmp/
+/coverage/
+/*.exe
+/*.dll
+/*.so
+/*.dylib
+/*.test
+*.out
+
+# Go workspace files
+go.work
+go.work.sum
+
+# Dependency management
+vendor/
+
+# ───────────────────────────────
+# Logs and runtime data
+# ───────────────────────────────
+*.log
+*.pid
+*.seed
+*.tmp
+
+# ───────────────────────────────
+# Environment & config files
+# ───────────────────────────────
+.env
+.env.local
+.env.*.local
+config/*.local.yaml
+config/*.secret.yaml
+*.envrc
+
+# JetBrains / GoLand
+.idea/
+*.iml
+
+# Others
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ───────────────────────────────
+# Test artifacts
+# ───────────────────────────────
+/coverage.txt
+/cover.out
+/testdata/*.tmp
+/testdata/*.log
+
+# ───────────────────────────────
+# Docker / CI artifacts
+# ───────────────────────────────
+/docker-compose.override.yml
+/.env.docker
+*.bak
+
+.env
+.env.local
