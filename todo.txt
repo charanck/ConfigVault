@@ -6,3 +6,4 @@
 - implement client authentication using clientId and client secret
 - figure out how to handle multiple environments (dev, staging, prod)
 - figure our how to clone config and secrets across clients/services
+- implement oauth authentication and basic auth
