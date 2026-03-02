@@ -12,7 +12,6 @@ const (
 )
 
 type Config struct {
-	Name  string     `json:"name"`
-	Type  ConfigType `json:"type"`
-	Value any        `json:"value"`
+	Name string     `json:"name"`
+	Type ConfigType `json:"type"`
 }

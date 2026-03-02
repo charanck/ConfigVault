@@ -12,7 +12,6 @@ const (
 )
 
 type Secret struct {
-	Name           string     `json:"name"`
-	Type           SecretType `json:"type"`
-	EncryptedValue any        `json:"value"` // has to be decrypted by client/app before use
+	Name string     `json:"name"`
+	Type SecretType `json:"type"`
 }

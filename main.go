@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/charanck/ConfigVault/config"
+)
 
 func main() {
-	fmt.Println("Hello, World!")
+	config, err := config.LoadConfig()
+	if err != nil {
+		fmt.Println("Error loading config:", err)
+		return
+	}
+
+	fmt.Println("Config loaded successfully:", config)
 }
