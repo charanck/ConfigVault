@@ -1,7 +1,4 @@
 - figure out locking using just git
-- model config model for json files
-- model client model for json files
-- generating private and public keys for client
 - configure optional redis for caching
 - implement client authentication using clientId and client secret
 - figure out how to handle multiple environments (dev, staging, prod)

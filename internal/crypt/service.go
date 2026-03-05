@@ -45,7 +45,7 @@ func (s *CryptService) GenerateKeyPair() (string, string, error) {
 	return string(pubPEM), string(privPEM), nil
 }
 
-func decodePublicKey(publicKeyStr string) (*rsa.PublicKey, error) {
+func (s *CryptService) decodePublicKey(publicKeyStr string) (*rsa.PublicKey, error) {
 	block, _ := pem.Decode([]byte(publicKeyStr))
 	if block == nil {
 		return nil, fmt.Errorf("failed to parse PEM block")
@@ -64,7 +64,7 @@ func decodePublicKey(publicKeyStr string) (*rsa.PublicKey, error) {
 }
 
 func (s *CryptService) Encrypt(value string, publicKey string) (string, error) {
-	decodedPublicKey, err := decodePublicKey(publicKey)
+	decodedPublicKey, err := s.decodePublicKey(publicKey)
 	if err != nil {
 		return "", err
 	}
@@ -74,4 +74,22 @@ func (s *CryptService) Encrypt(value string, publicKey string) (string, error) {
 		return "", err
 	}
 	return string(encryptedData), nil
+}
+
+func (s *CryptService) Decrypt(encryptedValue string, privateKeyStr string) (string, error) {
+	block, _ := pem.Decode([]byte(privateKeyStr))
+	if block == nil {
+		return "", fmt.Errorf("failed to parse PEM block")
+	}
+	priv, err := x509.ParsePKCS1PrivateKey(block.Bytes)
+	if err != nil {
+		return "", err
+	}
+
+	label := []byte("ConfigVault")
+	decryptedData, err := rsa.DecryptOAEP(sha256.New(), rand.Reader, priv, []byte(encryptedValue), label)
+	if err != nil {
+		return "", err
+	}
+	return string(decryptedData), nil
 }
