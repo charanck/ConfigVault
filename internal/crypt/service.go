@@ -5,9 +5,11 @@ import (
 	"crypto/rsa"
 	"crypto/sha256"
 	"crypto/x509"
+	"encoding/base64"
 	"encoding/pem"
 	"fmt"
 
+	"github.com/alexedwards/argon2id"
 	"github.com/charanck/ConfigVault/config"
 )
 
@@ -92,4 +94,47 @@ func (s *CryptService) Decrypt(encryptedValue string, privateKeyStr string) (str
 		return "", err
 	}
 	return string(decryptedData), nil
+}
+
+func (s *CryptService) GenerateClientID() (string, error) {
+	clientIDBytes := make([]byte, 16)
+	_, err := rand.Read(clientIDBytes)
+	if err != nil {
+		return "", err
+	}
+	return fmt.Sprintf("%x", clientIDBytes), nil
+}
+
+func (s *CryptService) GenerateClientSecret() (string, error) {
+	b := make([]byte, 32)
+
+	if _, err := rand.Read(b); err != nil {
+		return "", fmt.Errorf("entropy source failure: %w", err)
+	}
+
+	return base64.RawURLEncoding.EncodeToString(b), nil
+}
+
+func (s *CryptService) HashSecret(plainSecret string) (string, error) {
+	params := &argon2id.Params{
+		Memory:      64 * 1024,
+		Iterations:  3,
+		Parallelism: 2,
+		SaltLength:  16,
+		KeyLength:   32,
+	}
+
+	hash, err := argon2id.CreateHash(plainSecret, params)
+	if err != nil {
+		return "", err
+	}
+	return hash, nil
+}
+
+func (s *CryptService) VerifySecret(plainSecret, hashedSecret string) (bool, error) {
+	match, err := argon2id.ComparePasswordAndHash(plainSecret, hashedSecret)
+	if err != nil {
+		return false, err
+	}
+	return match, nil
 }

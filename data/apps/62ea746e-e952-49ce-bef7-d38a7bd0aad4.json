@@ -1,0 +1,15 @@
+{
+    "id": "62ea746e-e952-49ce-bef7-d38a7bd0aad4",
+    "name": "My First App",
+    "description": "This is a test app",
+    "tags": [
+        "test",
+        "example"
+    ],
+    "client_id": "6b8d829e4f8924d4a8f374a9faeb8274",
+    "client_secret": "$argon2id$v=19$m=65536,t=3,p=2$FThpbNSyxUB9VMmvDHIvNA$AYSRrMD9arYeI5bbO9edaxPSEFfeP3UdAV/yXmB3ZYQ",
+    "public_certificate": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw1rbqi2lxru2u91cOzcX\n3752aJTG6Qb4k7JxO9PS5XXmvOmg5XuO6IjdIg5V504+zunFuAwBTiFisatUnPV1\nFBjKD89u6B/CoM62rlV7dkyVStMZc+tbr5ghNsP5kltGPBsjWlyv5H2tq9IELS4b\nNAtoeEukyGfJwN/9HOoNLiOJ3Wg/VTelphz4OntZxn7Epo2eCywFLAbO1dIsnfkS\ndcTF0DkaJ8ftl0O5jW7hInlnFRUld5eTp+7kXmjgF7nMtoIv+6YUMCMVy8ZHS5s3\n2kMJqEw80r9G+sR9tlSStYLuF2gOulVLG9MAUcDNUc6J3ge+PcARwrYyntODXOkO\n+wIDAQAB\n-----END PUBLIC KEY-----\n",
+    "configs": {},
+    "secrets": {},
+    "environments": []
+}

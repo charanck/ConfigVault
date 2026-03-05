@@ -6,7 +6,7 @@ type App struct {
 	Description       string            `json:"description"`
 	Tags              []string          `json:"tags"`
 	ClientID          string            `json:"client_id"`
-	ClientSecret      string            `json:"client_secret"`
+	ClientSecret      string            `json:"client_secret"` // Hashed or encrypted format
 	PublicCertificate string            `json:"public_certificate"`
 	Configs           map[string]Config `json:"configs"`
 	Secrets           map[string]Secret `json:"secrets"`
