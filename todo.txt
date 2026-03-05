@@ -4,3 +4,13 @@
 - figure out how to handle multiple environments (dev, staging, prod)
 - figure our how to clone config and secrets across clients/services
 - implement oauth authentication and basic auth
+
+
+[Short term todos]
+- implement config and secret creation
+- implement config and secret retrieval and updating
+- implement client secret rotation
+- implement git commit and push after changes
+- implement error handling and logging
+- implement unit tests for core functionality
+- implement integration tests for git operations
